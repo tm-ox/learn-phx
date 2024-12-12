@@ -13,7 +13,7 @@
         @apply bg-secondary;
     }
     nav {
-        @apply flex justify-between items-center px-3 py-2 max-w-screen-xl mx-auto;
+        @apply flex justify-between items-center px-3 py-2 max-w-screen-lg mx-auto;
         h2 {
             @apply text-primary;
         }
@@ -22,7 +22,7 @@
         @apply mx-auto;
     }
     section {
-        @apply max-w-screen-xl mx-auto min-h-[calc(100vh-340px)];
+        @apply max-w-screen-lg mx-auto min-h-[calc(100vh-280px)] px-3;
     }
     p {
         @apply text-xs;
@@ -46,7 +46,7 @@
         @apply px-3 py-3 border-b border-primary border-opacity-50 hover:bg-accent hover:cursor-pointer trans;
     }
     footer {
-        @apply flex gap-4 justify-center items-center max-w-screen-xl mx-auto h-12 px-3 py-3 border-t border-primary border-opacity-50;
+        @apply max-w-screen-lg mx-auto;
     }
 }
 
@@ -77,7 +77,7 @@
         #340e33,
         #0a050a
     );
-    height: 225px;
+    height: 160px;
 }
 
 input:-webkit-autofill,
@@ -118,13 +118,13 @@ select:-webkit-autofill:focus {
 [multiple],
 textarea,
 select {
-    @apply bg-background border-primary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md;
+    @apply bg-background border-secondary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md py-1;
 }
 
 textarea {
-    @apply h-52 border-l-0 !rounded-l-none !m-0;
+    @apply h-96 border-l-0 !rounded-l-none !m-0 resize-none !rounded-t-none focus:border-secondary text-text;
 }
 
 #gist-wrapper div {
-    @apply w-full rounded-none;
+    @apply w-full;
 }

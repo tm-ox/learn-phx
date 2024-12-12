@@ -3,46 +3,48 @@
 </div>
 
 <section>
-  <.form for={@form} phx-submit="create" phx-change="validate">
-    <div class="flex flex-col gap-3 justif-center mb-10 p-3">
-      <.input
-        field={@form[:description]}
-        placeholder="Gist description..."
-        autocomplete="off"
-        phx-debounce="blur"
-      />
+  <.form for={@form} phx-submit="create" phx-change="validate" class="flex flex-col">
+    <%!-- <div class="flex flex-col gap-3 justif-center mb-10 p-3"> --%>
+    <.input
+      field={@form[:description]}
+      placeholder="Gist description..."
+      autocomplete="off"
+      phx-debounce="blur"
+    />
+    <div class="bg-secondary px-2 py-3 mt-3 border border-b-0 rounded-t-md border-secondary">
       <.input
         field={@form[:name]}
         placeholder="Filename including extension..."
         autocomplete="off"
         phx-debounce="blur"
       />
-      <div id="gist-wrapper" class="flex" phx-update="ignore">
-        <textarea
-          id="line-numbers"
-          readonly
-          class="h-fill w-[54px] border text-right overflow-hidden resize-none border-r-0 focus:outline-none focus:border-primary !rounded-none !rounded-l-md text-sm"
-        >
+    </div>
+    <div id="gist-wrapper" class="flex" phx-update="ignore">
+      <textarea
+        id="line-numbers"
+        readonly
+        class="h-fill w-[52px] border text-primary text-right overflow-hidden resize-none border-r-0 focus:outline-none focus:border-secondary !rounded-none !rounded-bl-md text-sm leading-6"
+      >
         <%= "1\n" %>
         </textarea>
-        <.input
-          type="textarea"
-          id="gist-textarea"
-          phx-hook="UpdateLineNumbers"
-          field={@form[:markup_text]}
-          placeholder="Insert code..."
-          spellcheck="false"
-          autocomplete="off"
-          phx-debounce="blur"
-          phx-hook="UpdateLineNumbers"
-        />
-      </div>
-      <.button
-        phx-disable-with="Creating..."
-        class="bg-secondary hover:bg-accent border hover:border-secondary py-[5px] mt-2 ml-auto"
-      >
-        Create gist
-      </.button>
+      <.input
+        type="textarea"
+        id="gist-textarea"
+        phx-hook="UpdateLineNumbers"
+        field={@form[:markup_text]}
+        placeholder="Insert code..."
+        spellcheck="false"
+        autocomplete="off"
+        phx-debounce="blur"
+        phx-hook="UpdateLineNumbers"
+      />
     </div>
+    <.button
+      phx-disable-with="Creating..."
+      class="bg-secondary hover:bg-accent py-[5px] mt-3 ml-auto rounded-md"
+    >
+      Create gist
+    </.button>
+    <%!-- </div> --%>
   </.form>
 </section>
