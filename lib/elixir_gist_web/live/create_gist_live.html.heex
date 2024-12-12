@@ -1,0 +1,28 @@
+<div class="flex items-center justify-center gradient w-full">
+  <h1 class="text-center">Instantly share code, notes & snippets.</h1>
+</div>
+
+<section>
+  <.form for={@form}>
+    <div class="flex flex-col gap-1 justif-center mb-10 p-3">
+      <.input field={@form[:decription]} placeholder="Gist description..." autocomplete="off" />
+      <.input
+        field={@form[:name]}
+        placeholder="Filename including extension..."
+        autocomplete="off"
+      />
+      <.input
+        type="textarea"
+        field={@form[:markup_text]}
+        placeholder="Insert code..."
+        spellcheck="false"
+        autocomplete="off"
+        phx-debounce="blur"
+        phx-hook="UpdateLineNumbers"
+      />
+      <.button class="bg-secondary hover:bg-accent border hover:border-secondary py-[5px] mt-2 ml-auto">
+        Create gist
+      </.button>
+    </div>
+  </.form>
+</section>
