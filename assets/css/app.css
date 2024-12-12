@@ -80,6 +80,29 @@
     height: 225px;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #69e228;
+    -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: linear-gradient(transparent, #8a1692, transparent);
+}
+
 [type="text"],
 [type="email"],
 [type="url"],
@@ -95,5 +118,13 @@
 [multiple],
 textarea,
 select {
-    @apply bg-background border-primary focus:outline-none focus:border-accent focus:ring-0;
+    @apply bg-background border-primary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md;
+}
+
+textarea {
+    @apply h-52 border-l-0 !rounded-l-none !m-0;
+}
+
+#gist-wrapper div {
+    @apply w-full rounded-none;
 }
