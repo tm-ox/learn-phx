@@ -11,8 +11,7 @@ defmodule ElixirGist.Application do
       ElixirGistWeb.Telemetry,
       ElixirGist.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:elixir_gist, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:elixir_gist, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:elixir_gist, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ElixirGist.PubSub},
       # Start the Finch HTTP client for sending emails

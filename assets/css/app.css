@@ -70,7 +70,7 @@
         border-color: transparent transparent #e297e8 transparent;
     }
     .page-header {
-        @apply flex items-center justify-center gradient w-full h-36 pb-3;
+        @apply flex items-center justify-center gradient w-full pb-3 h-40;
     }
     .gist-header {
         @apply flex items-center bg-secondary px-2 py-3 border border-b-0 rounded-t-md border-secondary;
@@ -97,7 +97,7 @@
     }
 
     textarea {
-        @apply h-96 !m-0 resize-none border-none text-text;
+        @apply h-96 !m-0 resize-none border-none text-text no-scrollbar;
     }
 
     #gist-wrapper div {
@@ -142,5 +142,12 @@
             #340e33,
             #0a050a
         );
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
     }
 }

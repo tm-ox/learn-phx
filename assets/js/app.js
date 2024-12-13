@@ -28,9 +28,17 @@ let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
 
+function updateLineNumbers(value, element_id = "#line-numbers") {
+  const lineNumberText = document.querySelector(element_id);
+  if (!lineNumberText) return;
+  const lines = value.split("\n");
+  const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
+  lineNumberText.value = numbers;
+}
+
 let Hooks = {};
 
-Hooks.Highligh = {
+Hooks.Highlight = {
   mounted() {
     let name = this.el.getAttribute("data-name");
     let codeBlock = this.el.querySelector("pre code");
@@ -38,7 +46,9 @@ Hooks.Highligh = {
     if (name && codeBlock) {
       codeBlock.className = codeBlock.className.replace(/language-\S+/g, "");
       codeBlock.classList.add(`language-${this.getSyntaxType(name)}`);
-      hljs.highlightElement(codeBlock);
+      trimmed = this.trimCodeBlock(codeBlock);
+      hljs.highlightElement(trimmed);
+      updateLineNumbers(trimmed.textContent, "#syntax-numbers");
     }
   },
 
@@ -59,6 +69,15 @@ Hooks.Highligh = {
         return "elixir";
     }
   },
+  trimCodeBlock(codeBlock) {
+    const lines = codeBlock.textContent.split("\n");
+    if (lines.length > 2) {
+      lines.shift();
+      lines.pop();
+    }
+    codeBlock.textContent = lines.join("\n");
+    return codeBlock;
+  },
 };
 
 Hooks.UpdateLineNumbers = {
@@ -66,7 +85,7 @@ Hooks.UpdateLineNumbers = {
     const lineNumberText = document.querySelector("#line-numbers");
 
     this.el.addEventListener("input", () => {
-      this.updateLineNumbers();
+      updateLineNumbers(this.el.value);
     });
 
     this.el.addEventListener("scroll", () => {
@@ -91,14 +110,7 @@ Hooks.UpdateLineNumbers = {
       lineNumberText.value = "1\n";
     });
 
-    this.updateLineNumbers();
-  },
-  updateLineNumbers() {
-    const lineNumberText = document.querySelector("#line-numbers");
-    if (!lineNumberText) return;
-    const lines = this.el.value.split("\n");
-    const numbers = lines.map((_, index) => index + 1).join("\n") + "\n";
-    lineNumberText.value = numbers;
+    updateLineNumbers(this.el.value);
   },
 };
 
