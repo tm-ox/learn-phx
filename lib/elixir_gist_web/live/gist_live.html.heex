@@ -1,5 +1,55 @@
-<div id="highlight" data-name={@gist.name}>
-  <pre><code class="language-html">
+<div class="page-header">
+  <div class="content-width flex flex-col gap-3">
+    <div class="flex justify-between">
+      <div class="flex items-center gap-3">
+        <.avatar id="gist_view" click={} />
+        <h5>{@current_user.email}</h5>
+      </div>
+      <div class="flex">
+        <div class="flex gap-1 items-center h-6 w-auto p-1 bg-secondary border rounded-l-md">
+          <img src="/images/BookmarkOutline.svg" alt="Bookmark Button" />
+          <h5>Bookmark</h5>
+        </div>
+        <div class="flex gap-1 justify-center h-6 w-6 p-1 bg-background border border-l-0 rounded-r-md">
+          <h5>0</h5>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-1">
+      <div class="flex gap-1">
+        <h4>{@gist.name} :</h4>
+        <p>{@gist.description}</p>
+      </div>
+      <div class="flex gap-1">
+        <h5>Updated:</h5>
+        <h5 class="font-light">{@gist.updated_at}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="highlight" data-name={@gist.name}>
+  <div class="gist-header">
+    <button type="button" phx-click={} class="px-1 ml-auto">
+      <img src="/images/delete.svg" alt="Delete Button" />
+    </button>
+    <button type="button" phx-click={} class="px-1">
+      <img src="/images/edit.svg" alt="Edit Button" />
+    </button>
+    <button type="button" phx-click={} class="px-1">
+      <img src="/images/copy.svg" alt="Copy Button" />
+    </button>
+  </div>
+  <div class="gist-body">
+    <textarea
+      id="line-numbers"
+      readonly
+      class="h-fill w-[52px] text-right overflow-hidden resize-none border-none focus:outline-none text-sm leading-6"
+    >
+          <%= "1\n" %>
+          </textarea>
+    <pre class="w-full overflow-hidden"><code>
     {@gist.markup_text}
   </code></pre>
-</div>
+  </div>
+</section>

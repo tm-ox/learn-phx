@@ -1,11 +1,11 @@
 <header>
   <nav>
-    <div class="flex relative gap-4">
+    <div class="flex gap-4 w-full">
       <.brand />
       <.search />
     </div>
     <div class="relative">
-      <.avatar click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()} />
+      <.avatar id="user_menu" click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()} />
       <div
         id="dropdown_menu"
         class="absolute right-0 mt-4 w-48 bg-background border border-primary rounded-lg dropdown-menu-arrow"

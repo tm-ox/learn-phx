@@ -15,6 +15,7 @@ defmodule ElixirGistWeb.Layouts do
 
   # def brand(assigns)
   # def search(assigns)
+  attr :id, :string, required: true
   attr :click, :string, required: true
   # attr :click_away, :string, required: true
   # attr :user, :string, required: false

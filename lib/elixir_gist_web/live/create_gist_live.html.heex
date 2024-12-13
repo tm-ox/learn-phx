@@ -1,50 +1,49 @@
-<div class="flex items-center justify-center gradient w-full">
-  <h1 class="text-center">Instantly share code, notes & snippets.</h1>
+<div class="page-header">
+  <h1 class="text-center content-width">Instantly share code, notes & snippets.</h1>
 </div>
 
 <section>
-  <.form for={@form} phx-submit="create" phx-change="validate" class="flex flex-col">
-    <%!-- <div class="flex flex-col gap-3 justif-center mb-10 p-3"> --%>
+  <.form for={@form} phx-submit="create" phx-change="validate" class="flex flex-col gap-3">
     <.input
       field={@form[:description]}
       placeholder="Gist description..."
       autocomplete="off"
       phx-debounce="blur"
     />
-    <div class="bg-secondary px-2 py-3 mt-3 border border-b-0 rounded-t-md border-secondary">
-      <.input
-        field={@form[:name]}
-        placeholder="Filename including extension..."
-        autocomplete="off"
-        phx-debounce="blur"
-      />
-    </div>
-    <div id="gist-wrapper" class="flex" phx-update="ignore">
-      <textarea
-        id="line-numbers"
-        readonly
-        class="h-fill w-[52px] border text-primary text-right overflow-hidden resize-none border-r-0 focus:outline-none focus:border-secondary !rounded-none !rounded-bl-md text-sm leading-6"
-      >
+    <div>
+      <div class="gist-header pt-1">
+        <.input
+          field={@form[:name]}
+          placeholder="Filename + extension..."
+          autocomplete="off"
+          phx-debounce="blur"
+        />
+      </div>
+      <div id="gist-wrapper" class="gist-body" phx-update="ignore">
+        <textarea
+          id="line-numbers"
+          readonly
+          class="h-fill w-[52px] text-right overflow-hidden resize-none border-none focus:outline-none text-sm leading-6"
+        >
         <%= "1\n" %>
         </textarea>
-      <.input
-        type="textarea"
-        id="gist-textarea"
-        phx-hook="UpdateLineNumbers"
-        field={@form[:markup_text]}
-        placeholder="Insert code..."
-        spellcheck="false"
-        autocomplete="off"
-        phx-debounce="blur"
-        phx-hook="UpdateLineNumbers"
-      />
+        <.input
+          type="textarea"
+          id="gist-textarea"
+          phx-hook="UpdateLineNumbers"
+          field={@form[:markup_text]}
+          placeholder="Insert code..."
+          spellcheck="false"
+          autocomplete="off"
+          phx-debounce="blur"
+        />
+      </div>
     </div>
     <.button
       phx-disable-with="Creating..."
-      class="bg-secondary hover:bg-accent py-[5px] mt-3 ml-auto rounded-md"
+      class="bg-secondary hover:bg-accent py-[5px] ml-auto rounded-md"
     >
       Create gist
     </.button>
-    <%!-- </div> --%>
   </.form>
 </section>

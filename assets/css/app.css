@@ -7,13 +7,13 @@
 /* This file is for your main application CSS */
 @layer base {
     body {
-        @apply bg-background font-brand text-primary;
+        @apply bg-background font-brand text-primary tracking-wide;
     }
     header {
         @apply bg-secondary;
     }
     nav {
-        @apply flex justify-between items-center px-3 py-2 max-w-screen-lg mx-auto;
+        @apply flex gap-4 justify-between items-center py-2 content-width;
         h2 {
             @apply text-primary;
         }
@@ -22,10 +22,10 @@
         @apply mx-auto;
     }
     section {
-        @apply max-w-screen-lg mx-auto min-h-[calc(100vh-280px)] px-3;
+        @apply content-width min-h-[calc(100vh-280px)];
     }
     p {
-        @apply text-xs;
+        @apply text-base font-light;
     }
     a {
         @apply hover:font-bold underline-offset-4;
@@ -35,6 +35,12 @@
     }
     h2 {
         @apply font-bold text-2xl tracking-wide;
+    }
+    h4 {
+        @apply text-base font-bold;
+    }
+    h5 {
+        @apply text-xs;
     }
     button {
         @apply text-primary font-bold hover:text-background trans;
@@ -46,85 +52,95 @@
         @apply px-3 py-3 border-b border-primary border-opacity-50 hover:bg-accent hover:cursor-pointer trans;
     }
     footer {
-        @apply max-w-screen-lg mx-auto;
+        @apply content-width;
+    }
+    code {
+        @apply text-sm text-text;
     }
 }
 
 @layer components {
-}
+    .dropdown-menu-arrow::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: calc(95% - 14px);
+        border-width: 0 5px 5px 5px;
+        border-style: solid;
+        border-color: transparent transparent #e297e8 transparent;
+    }
+    .page-header {
+        @apply flex items-center justify-center gradient w-full h-36 pb-3;
+    }
+    .gist-header {
+        @apply flex items-center bg-secondary px-2 py-3 border border-b-0 rounded-t-md border-secondary;
+    }
+    .gist-body {
+        @apply flex border border-secondary border-t-0 rounded-b-md pt-2;
+    }
+    [type="text"],
+    [type="email"],
+    [type="url"],
+    [type="password"],
+    [type="number"],
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="search"],
+    [type="tel"],
+    [type="time"],
+    [type="week"],
+    [multiple],
+    textarea,
+    select {
+        @apply bg-background border-secondary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md py-1;
+    }
 
-@layer utilities {
-    .trans {
-        @apply transition ease-in-out delay-75;
+    textarea {
+        @apply h-96 !m-0 resize-none border-none text-text;
+    }
+
+    #gist-wrapper div {
+        @apply w-full;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        -webkit-text-fill-color: #69e228;
+        -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        background: linear-gradient(transparent, #8a1692, transparent);
     }
 }
 
-.dropdown-menu-arrow::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: calc(95% - 12px);
-    border-width: 0 5px 5px 5px;
-    border-style: solid;
-    border-color: transparent transparent #e297e8 transparent;
-}
-
-.gradient {
-    background-image: linear-gradient(
-        to bottom,
-        #8a1692,
-        #551653,
-        #340e33,
-        #0a050a
-    );
-    height: 160px;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    -webkit-text-fill-color: #69e228;
-    -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    background: linear-gradient(transparent, #8a1692, transparent);
-}
-
-[type="text"],
-[type="email"],
-[type="url"],
-[type="password"],
-[type="number"],
-[type="date"],
-[type="datetime-local"],
-[type="month"],
-[type="search"],
-[type="tel"],
-[type="time"],
-[type="week"],
-[multiple],
-textarea,
-select {
-    @apply bg-background border-secondary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md py-1;
-}
-
-textarea {
-    @apply h-96 border-l-0 !rounded-l-none !m-0 resize-none !rounded-t-none focus:border-secondary text-text;
-}
-
-#gist-wrapper div {
-    @apply w-full;
+@layer utilities {
+    .content-width {
+        @apply w-full max-w-screen-lg mx-auto px-3;
+    }
+    .trans {
+        @apply transition ease-in-out delay-75;
+    }
+    .gradient {
+        background-image: linear-gradient(
+            to bottom,
+            #8a1692,
+            #551653,
+            #340e33,
+            #0a050a
+        );
+    }
 }
