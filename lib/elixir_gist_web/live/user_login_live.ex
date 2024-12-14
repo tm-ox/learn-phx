@@ -3,18 +3,18 @@ defmodule ElixirGistWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
-        Log in to account
-        <:subtitle>
-          Don't have an account?
-          <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
-            Sign up
-          </.link>
-          for an account now.
-        </:subtitle>
-      </.header>
+    <.header class="text-center page-header">
+      Log in to account
+      <:subtitle>
+        Don't have an account?
+        <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
+          Sign up
+        </.link>
+        for an account now.
+      </:subtitle>
+    </.header>
 
+    <section>
       <.simple_form for={@form} id="login_form" action={~p"/users/log_in"} phx-update="ignore">
         <.input field={@form[:email]} type="email" label="Email" required />
         <.input field={@form[:password]} type="password" label="Password" required />
@@ -31,7 +31,7 @@ defmodule ElixirGistWeb.UserLoginLive do
           </.button>
         </:actions>
       </.simple_form>
-    </div>
+    </section>
     """
   end
 

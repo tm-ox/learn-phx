@@ -5,12 +5,12 @@ defmodule ElixirGistWeb.UserSettingsLive do
 
   def render(assigns) do
     ~H"""
-    <.header class="text-center">
-      Account Settings
+    <.header class="text-center page-header">
+      <h1>Account Settings</h1>
       <:subtitle>Manage your account email address and password settings</:subtitle>
     </.header>
 
-    <div class="space-y-12 divide-y">
+    <section class="space-y-8 divide-y">
       <div>
         <.simple_form
           for={@email_form}
@@ -29,7 +29,7 @@ defmodule ElixirGistWeb.UserSettingsLive do
             required
           />
           <:actions>
-            <.button phx-disable-with="Changing...">Change Email</.button>
+            <.button class="default-button" phx-disable-with="Changing...">Change Email</.button>
           </:actions>
         </.simple_form>
       </div>
@@ -65,11 +65,11 @@ defmodule ElixirGistWeb.UserSettingsLive do
             required
           />
           <:actions>
-            <.button phx-disable-with="Changing...">Change Password</.button>
+            <.button class="default-button" phx-disable-with="Changing...">Change Password</.button>
           </:actions>
         </.simple_form>
       </div>
-    </div>
+    </section>
     """
   end
 

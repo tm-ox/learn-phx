@@ -3,14 +3,19 @@
 </div>
 
 <section>
-  <.form for={@form} phx-submit="create" phx-change="validate" class="flex flex-col gap-3">
+  <.form
+    for={@form}
+    phx-submit="create"
+    phx-change="validate"
+    class="flex flex-col flex-grow gap-3"
+  >
     <.input
       field={@form[:description]}
       placeholder="Gist description..."
       autocomplete="off"
       phx-debounce="blur"
     />
-    <div>
+    <div class="flex flex-col flex-grow">
       <div class="gist-header pt-1">
         <.input
           field={@form[:name]}
@@ -18,12 +23,18 @@
           autocomplete="off"
           phx-debounce="blur"
         />
+        <.button
+          phx-disable-with="Creating..."
+          class="bg-background hover:bg-accent px-4 !py-1 ml-auto rounded-md mt-2"
+        >
+          Create gist
+        </.button>
       </div>
       <div id="gist-wrapper" class="gist-body" phx-update="ignore">
         <textarea
           id="line-numbers"
           readonly
-          class="h-fill w-[52px] text-right overflow-hidden resize-none border-none focus:outline-none text-sm leading-6"
+          class="h-fill w-[52px] text-right overflow-hidden resize-none border-none focus:outline-none text-sm leading-6 "
         >
         <%= "1\n" %>
         </textarea>
@@ -36,14 +47,9 @@
           spellcheck="false"
           autocomplete="off"
           phx-debounce="blur"
+          class="flex-grow !bg-text"
         />
       </div>
     </div>
-    <.button
-      phx-disable-with="Creating..."
-      class="bg-secondary hover:bg-accent py-[5px] ml-auto rounded-md"
-    >
-      Create gist
-    </.button>
   </.form>
 </section>

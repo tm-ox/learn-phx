@@ -1,16 +1,16 @@
 <div class="page-header">
   <div class="content-width flex flex-col gap-3">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center">
       <div class="flex items-center gap-3">
         <.avatar id="gist_view" click={} />
         <h5>{@current_user.email}</h5>
       </div>
       <div class="flex">
-        <div class="flex gap-1 items-center h-6 w-auto p-1 bg-secondary border rounded-l-md">
+        <button class="flex gap-1 items-center h-6 w-auto p-1 bg-secondary border rounded-l-md hover:border-primary hover:bg-accent">
           <img src="/images/BookmarkOutline.svg" alt="Bookmark Button" />
           <h5>Bookmark</h5>
-        </div>
-        <div class="flex gap-1 justify-center h-6 w-6 p-1 bg-background border border-l-0 rounded-r-md">
+        </button>
+        <div class="flex gap-1 justify-center h-6 w-6 p-1 bg-background border border-l-0 rounded-r-md ">
           <h5>0</h5>
         </div>
       </div>
@@ -30,17 +30,21 @@
 
 <section id="syntax-section">
   <div class="gist-header">
-    <button type="button" phx-click={} class="px-1 ml-auto">
-      <img src="/images/delete.svg" alt="Delete Button" />
-    </button>
-    <button type="button" phx-click={} class="px-1">
-      <img src="/images/edit.svg" alt="Edit Button" />
-    </button>
-    <button type="button" phx-click={} class="px-1">
-      <img src="/images/copy.svg" alt="Copy Button" />
-    </button>
+    <div class="ml-auto">
+      <%= if @current_user.id == @gist.user_id do %>
+        <button type="button" phx-click="delete" phx-value-id={@gist.id} class="px-1">
+          <img src="/images/delete.svg" alt="Delete Button" />
+        </button>
+        <button type="button" phx-click={} class="px-1">
+          <img src="/images/edit.svg" alt="Edit Button" />
+        </button>
+      <% end %>
+      <button type="button" phx-click={} class="px-1">
+        <img src="/images/copy.svg" alt="Copy Button" />
+      </button>
+    </div>
   </div>
-  <div class="gist-body bg-[#0D1117] h-[calc(100vh-340px)] overflow-scroll">
+  <div class="gist-body bg-[#0D1117] h-[calc(100vh-350px)] overflow-scroll">
     <div class="grid grid-cols-12">
       <textarea
         id="syntax-numbers"

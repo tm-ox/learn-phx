@@ -1,84 +1,102 @@
-<header>
-  <nav>
-    <div class="flex gap-4 w-full">
-      <.brand />
-      <.search />
-    </div>
-    <div class="relative">
-      <.avatar id="user_menu" click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()} />
-      <div
-        id="dropdown_menu"
-        class="absolute right-0 mt-4 w-48 bg-background border border-primary rounded-lg dropdown-menu-arrow"
-        hidden="true"
-        phx-click-away={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}
-      >
-        <ul>
-          <%= if @current_user do %>
-            <li>
-              <.link
-                href={~p"/users/settings"}
-                role="menuItem"
-                tabindex="-1"
-                method="get"
-                id="user-menu-item-0"
-              >
-                Signed in as: {@current_user.email}
-              </.link>
-            </li>
-            <li>
-              <.link href="#" role="menuItem" tabindex="-1" method="get" id="user-menu-item-1">
-                Your gists
-              </.link>
-            </li>
-            <li>
-              <.link href="#" role="menuItem" tabindex="-1" method="get" id="user-menu-item-2">
-                Saved gists
-              </.link>
-            </li>
-            <li>
-              <.link
-                href={~p"/users/log_out"}
-                role="menuItem"
-                tabindex="-1"
-                method="delete"
-                id="user-menu-item-3"
-              >
-                Sign out
-              </.link>
-            </li>
-          <% else %>
-            <li>
-              <.link
-                href={~p"/users/log_in"}
-                role="menuItem"
-                tabindex="-1"
-                method="get"
-                id="user-menu-item-0"
-              >
-                Sign in
-              </.link>
-            </li>
-            <li>
-              <.link
-                href={~p"/users/register"}
-                role="menuItem"
-                tabindex="-1"
-                method="get"
-                id="user-menu-item-1"
-              >
-                Register
-              </.link>
-            </li>
-          <% end %>
-        </ul>
+<div class="flex flex-col min-h-screen">
+  <header>
+    <nav>
+      <div class="flex gap-4 w-full">
+        <.brand />
+        <.search />
       </div>
-    </div>
-  </nav>
-</header>
-<main>
-  <div class="mx-auto">
+      <div class="relative">
+        <.avatar id="user_menu" click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()} />
+        <div
+          id="dropdown_menu"
+          class="dropdown-menu"
+          hidden="true"
+          phx-click-away={ElixirGistWeb.Layouts.App.toggle_dropdown_menu()}
+        >
+          <ul>
+            <%= if @current_user do %>
+              <li>
+                <.link
+                  href={~p"/users/settings"}
+                  role="menuItem"
+                  tabindex="-1"
+                  method="get"
+                  id="user-menu-item-0"
+                  class="menu-item"
+                >
+                  Signed in as: {@current_user.email}
+                </.link>
+              </li>
+              <li>
+                <.link
+                  href="#"
+                  role="menuItem"
+                  tabindex="-1"
+                  method="get"
+                  id="user-menu-item-1"
+                  class="menu-item"
+                >
+                  Your gists
+                </.link>
+              </li>
+              <li>
+                <.link
+                  href="#"
+                  role="menuItem"
+                  tabindex="-1"
+                  method="get"
+                  id="user-menu-item-2"
+                  class="menu-item"
+                >
+                  Saved gists
+                </.link>
+              </li>
+              <li>
+                <.link
+                  href={~p"/users/log_out"}
+                  role="menuItem"
+                  tabindex="-1"
+                  method="delete"
+                  id="user-menu-item-3"
+                  class="menu-item"
+                >
+                  Sign out
+                </.link>
+              </li>
+            <% else %>
+              <li>
+                <.link
+                  href={~p"/users/log_in"}
+                  role="menuItem"
+                  tabindex="-1"
+                  method="get"
+                  id="user-menu-item-0"
+                  class="menu-item"
+                >
+                  Sign in
+                </.link>
+              </li>
+              <li>
+                <.link
+                  href={~p"/users/register"}
+                  role="menuItem"
+                  tabindex="-1"
+                  method="get"
+                  id="user-menu-item-1"
+                  class="menu-item"
+                >
+                  Register
+                </.link>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
     <.flash_group flash={@flash} />
     {@inner_content}
-  </div>
-</main>
-<.footer />
+  </main>
+  <.footer />
+</div>

@@ -120,6 +120,24 @@ let liveSocket = new LiveSocket("/live", Socket, {
   hooks: Hooks,
 });
 
+Hooks.CopyToClipboard = {
+  mounted() {
+    this.el.addEventListener("click", (e) => {
+      const textToCopy = this.el.getAttribute("data-clipboard-gist");
+      if (textToCopy) {
+        navigator.clipboard
+          .writeText(textToCopy)
+          .then(() => {
+            console.log("Gist copied to clipboard");
+          })
+          .catch((err) => {
+            console.error("Failed to copy text: ", err);
+          });
+      }
+    });
+  },
+};
+
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" });
 window.addEventListener("phx:page-loading-start", (_info) => topbar.show(300));
