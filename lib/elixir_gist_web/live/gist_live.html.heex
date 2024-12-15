@@ -22,24 +22,41 @@
       </div>
       <div class="flex gap-1">
         <h5>Updated:</h5>
-        <h5 class="font-light">{@gist.updated_at}</h5>
+        <h5 class="font-light">{@gist.relative}</h5>
       </div>
     </div>
   </div>
 </div>
 
-<section id="syntax-section">
+<div id="edit-section" style="display: none" class="flex flex-grow">
+  <.live_component
+    module={GistForm}
+    id={@gist.id}
+    current_user={@current_user}
+    form={to_form(Gists.change_gist(@gist))}
+    }
+  />
+</div>
+
+<section id="syntax-section" style="display: flex">
   <div class="gist-header">
-    <div class="ml-auto">
+    <div class="ml-auto flex gap-3">
       <%= if @current_user.id == @gist.user_id do %>
-        <button type="button" phx-click="delete" phx-value-id={@gist.id} class="px-1">
+        <button type="button" phx-click="delete" phx-value-id={@gist.id} class="click-button">
           <img src="/images/delete.svg" alt="Delete Button" />
         </button>
-        <button type="button" phx-click={} class="px-1">
+        <button type="button" id="edit-button" phx-hook="ToggleEdit" class="click-button">
           <img src="/images/edit.svg" alt="Edit Button" />
         </button>
       <% end %>
-      <button type="button" phx-click={} class="px-1">
+      <button
+        type="button"
+        id="copy-button"
+        phx-click="copy-gist"
+        phx-hook="CopyToClipboard"
+        data-clipboard-gist={@gist.markup_text}
+        class="click-button"
+      >
         <img src="/images/copy.svg" alt="Copy Button" />
       </button>
     </div>

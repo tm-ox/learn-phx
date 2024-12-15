@@ -21,8 +21,4 @@ defmodule ElixirGistWeb.Layouts do
   # attr :user, :string, required: false
   # attr :user_email, :string, required: false
   def avatar(assigns)
-
-  attr :text, :string, required: true
-  attr :url, :string, required: true
-  def test(assigns)
 end

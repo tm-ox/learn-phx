@@ -138,6 +138,19 @@ Hooks.CopyToClipboard = {
   },
 };
 
+Hooks.ToggleEdit = {
+  mounted() {
+    this.el.addEventListener("click", (e) => {
+      let edit = document.getElementById("edit-section");
+      let syntax = document.getElementById("syntax-section");
+      if (edit && syntax) {
+        edit.style.display = "flex";
+        syntax.style.display = "none";
+      }
+    });
+  },
+};
+
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" });
 window.addEventListener("phx:page-loading-start", (_info) => topbar.show(300));

@@ -4,7 +4,7 @@ defmodule ElixirGistWeb.UserLoginLive do
   def render(assigns) do
     ~H"""
     <.header class="text-center page-header">
-      Log in to account
+      <h1>Log in to account</h1>
       <:subtitle>
         Don't have an account?
         <.link navigate={~p"/users/register"} class="font-semibold text-brand hover:underline">
@@ -26,7 +26,7 @@ defmodule ElixirGistWeb.UserLoginLive do
           </.link>
         </:actions>
         <:actions>
-          <.button phx-disable-with="Logging in..." class="w-full">
+          <.button phx-disable-with="Logging in..." class="default-button mx-auto">
             Log in <span aria-hidden="true">→</span>
           </.button>
         </:actions>

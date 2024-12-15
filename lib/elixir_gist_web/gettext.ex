@@ -21,4 +21,5 @@ defmodule ElixirGistWeb.Gettext do
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
   use Gettext, otp_app: :elixir_gist
+  # use Gettext.Backend, otp_app: :my_app
 end

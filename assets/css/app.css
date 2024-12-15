@@ -33,12 +33,11 @@
     p {
         @apply text-base font-light;
     }
-
     h1 {
-        @apply text-4xl tracking-wide;
+        @apply text-3xl sm:text-4xl tracking-wide;
     }
     h2 {
-        @apply font-medium text-3xl tracking-wide;
+        @apply font-medium text-xl sm:text-3xl tracking-wide;
     }
     h4 {
         @apply text-base font-bold;
@@ -70,6 +69,18 @@
     .default-button {
         @apply bg-secondary hover:bg-accent hover:text-background !py-1;
     }
+    .click-button img:active {
+        @apply -scale-y-110;
+    }
+    .avatar-arrow::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: calc(95% - 14px);
+        border-width: 0 5px 5px 5px;
+        border-style: solid;
+        border-color: transparent transparent #e297e8 transparent;
+    }
     .dropdown-menu {
         @apply absolute right-0 mt-4 w-48 bg-background border border-primary rounded-lg dropdown-menu-arrow;
     }
@@ -89,7 +100,7 @@
         @apply flex items-center justify-center gradient w-full pb-6 h-36;
     }
     .gist-header {
-        @apply flex items-center bg-secondary px-2 py-3 border border-b-0 rounded-t-md border-secondary;
+        @apply flex items-center bg-secondary p-3 border border-b-0 rounded-t-md border-secondary;
     }
     .gist-body {
         @apply flex flex-grow border border-secondary border-t-0 rounded-b-md pt-2;
@@ -111,11 +122,9 @@
     select {
         @apply flex-grow bg-background border-secondary focus:outline-none focus:border-accent focus:ring-0 selection:bg-secondary text-sm font-light tracking-wide m-0 !rounded-md py-1;
     }
-
     textarea {
         @apply !flex-grow !min-h-full !m-0 resize-none border-none text-text no-scrollbar;
     }
-
     #gist-wrapper div {
         @apply w-full;
     }
@@ -132,11 +141,9 @@
         -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
         transition: background-color 5000s ease-in-out 0s;
     }
-
     ::-webkit-scrollbar {
         width: 10px;
     }
-
     ::-webkit-scrollbar-thumb {
         border-radius: 12px;
         background: linear-gradient(transparent, #8a1692, transparent);
