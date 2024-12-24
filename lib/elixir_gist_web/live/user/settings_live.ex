@@ -1,4 +1,4 @@
-defmodule ElixirGistWeb.UserSettingsLive do
+defmodule ElixirGistWeb.User.SettingsLive do
   use ElixirGistWeb, :live_view
 
   alias ElixirGist.Accounts

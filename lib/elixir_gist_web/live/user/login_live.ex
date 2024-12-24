@@ -1,4 +1,4 @@
-defmodule ElixirGistWeb.UserLoginLive do
+defmodule ElixirGistWeb.User.LoginLive do
   use ElixirGistWeb, :live_view
 
   def render(assigns) do

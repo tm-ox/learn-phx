@@ -1,4 +1,4 @@
-defmodule ElixirGistWeb.UserConfirmationLive do
+defmodule ElixirGistWeb.User.ConfirmationLive do
   use ElixirGistWeb, :live_view
 
   alias ElixirGist.Accounts

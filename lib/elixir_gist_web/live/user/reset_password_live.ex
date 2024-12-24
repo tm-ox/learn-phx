@@ -5,9 +5,9 @@ defmodule ElixirGistWeb.UserResetPasswordLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">Reset Password</.header>
+    <.header class="text-center page-header">Reset Password</.header>
 
+    <section>
       <.simple_form
         for={@form}
         id="reset_password_form"
@@ -34,7 +34,7 @@ defmodule ElixirGistWeb.UserResetPasswordLive do
         <.link href={~p"/users/register"}>Register</.link>
         | <.link href={~p"/users/log_in"}>Log in</.link>
       </p>
-    </div>
+    </section>
     """
   end
 
